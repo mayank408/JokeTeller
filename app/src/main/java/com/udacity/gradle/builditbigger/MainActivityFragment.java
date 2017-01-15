@@ -2,6 +2,7 @@ package com.udacity.gradle.builditbigger;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,11 +10,14 @@ import android.view.ViewGroup;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
+import com.example.jokeTeller;
 
 /**
  * A placeholder fragment containing a simple view.
  */
 public class MainActivityFragment extends Fragment {
+
+    private static final String TAG = "MainActivityFragment";
 
     public MainActivityFragment() {
     }
@@ -31,6 +35,11 @@ public class MainActivityFragment extends Fragment {
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .build();
         mAdView.loadAd(adRequest);
+
+        jokeTeller joke = new jokeTeller();
+
+        Log.d(TAG, "onCreateView: " + jokeTeller.getRandomJoke());
+
         return root;
     }
 }
